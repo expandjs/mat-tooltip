@@ -1,0 +1,23 @@
+{
+  "name": "mat-tooltip",
+  "license": "BSD-3-Clause",
+  "version": "0.8.0",
+  "description": "This component is used to display a material tooltip.",
+  "authors": [
+    "Giuliano Rullo <g.rullo@expandjs.com>",
+    "Maurizio Stefàno <m.stefano@expandjs.com>",
+    "Robert Manolea <r.manolea@expandjs.com>"
+  ],
+  "main": [
+    "mat-tooltip.html"
+  ],
+  "keywords": [
+    "web-components"
+  ],
+  "dependencies": {
+    "expandjs": "ExpandJS/expandjs",
+    "xp-device": "ExpandJS/xp-device",
+    "xp-tooltip": "ExpandJS/xp-tooltip",
+    "polymer": "Polymer/polymer#^0.5"
+  }
+}

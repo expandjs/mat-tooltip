@@ -1,0 +1,163 @@
+<!--
+@license
+Copyright (c) 2015 The expand.js authors. All rights reserved.
+This code may only be used under the BSD style license found at https://expandjs.github.io/LICENSE.txt
+The complete set of authors may be found at https://expandjs.github.io/AUTHORS.txt
+The complete set of contributors may be found at https://expandjs.github.io/CONTRIBUTORS.txt
+-->
+
+<!--
+This component is used to display a material tooltip.
+
+@component mat-tooltip
+@description This component is used to display a material tooltip.
+
+@dependency polymer Polymer/polymer#^0.5
+@dependency expandjs ExpandJS/expandjs
+@dependency xp-device ExpandJS/xp-device
+@dependency xp-tooltip ExpandJS/xp-tooltip
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../expandjs/expandjs.html">
+<link rel="import" href="../xp-device/xp-device.html">
+<link rel="import" href="../xp-tooltip/xp-tooltip.html">
+
+<polymer-element name="mat-tooltip" constructor="MATTooltipElement" attributes="empty showed tip">
+
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+                overflow: visible;
+            }
+
+            :host #matTooltipAdaptee::shadow #xpTooltipOverlay {
+                transition: opacity .4s cubic-bezier(0.55, 0, 0.55, 0.2), visibility .4s cubic-bezier(0.55, 0, 0.55, 0.2);
+                will-change: opacity, visibility;
+            }
+
+            :host #matTooltipAdaptee[showed]::shadow #xpTooltipOverlay {
+                transition: opacity .4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+
+            :host #matTooltipAdaptee::shadow #xpTooltipTip {
+                border-radius: 2px 2px 50% 50%;
+                padding: 4px 8px;
+                transform: translateY(-50%);
+                transition: border-radius .8s cubic-bezier(0.55, 0, 0.55, 0.2), transform .5s cubic-bezier(0.55, 0, 0.55, 0.2) .05s;
+                will-change: border-radius, transform;
+
+                /* TIP */
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                line-height: 14px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            :host #matTooltipAdaptee[showed]::shadow #xpTooltipTip {
+                border-radius: 2px;
+                transform: translateY(0%);
+                transition: border-radius .4s cubic-bezier(0.25, 0.8, 0.25, 1), transform .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+
+            :host #matTooltipAdaptee::shadow #xpTooltipOverlay::shadow #xpOverlayBody {
+                overflow: visible;
+            }
+
+            :host-context([mobile]) #matTooltipAdaptee::shadow #xpTooltipTip  {
+                margin: 12px 0;
+                padding: 10px 16px;
+
+                /* BODY 2 */
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 0.01em;
+                line-height: 24px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        </style>
+        <xp-tooltip context="{{}}" id="matTooltipAdaptee" empty="{{empty}}" showed="{{showed}}" tip="{{tip}}">
+            <content id="content"></content>
+        </xp-tooltip>
+    </template>
+
+    <script>
+        XPComponent({
+
+            /**
+             * Hides the tooltip.
+             *
+             * @method hide
+             * @returns {Element}
+             */
+            hide: function () {
+                var self = this;
+                self.$.matTooltipAdaptee.hide();
+                return self;
+            },
+
+            /**
+             * Shows the tooltip.
+             *
+             * @method show
+             * @returns {Element}
+             */
+            show: function () {
+                var self = this;
+                self.$.matTooltipAdaptee.show();
+                return self;
+            },
+
+            /**
+             * Toggles the tooltip.
+             *
+             * @method toggle
+             * @returns {Element}
+             */
+            toggle: function () {
+                var self = this;
+                self.$.matTooltipAdaptee.toggle();
+                return self;
+            },
+
+            /*********************************************************************/
+
+            // PUBLISH
+            publish: {
+
+                /**
+                 * If set to true, the tooltip is hidden.
+                 *
+                 * @attribute empty
+                 * @type boolean
+                 * @default false
+                 * @readonly
+                 */
+                empty: {reflect: true, value: false},
+
+                /**
+                 * If set to true, the tooltip is showed.
+                 *
+                 * @attribute showed
+                 * @type boolean
+                 * @default false
+                 */
+                showed: {reflect: true, value: false},
+
+                /**
+                 * The tooltip's text.
+                 *
+                 * @attribute tip
+                 * @type string
+                 * @default ""
+                 */
+                tip: {reflect: true, value: ''}
+            }
+        });
+    </script>
+
+</polymer-element>
