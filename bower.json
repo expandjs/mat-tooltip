@@ -2,7 +2,7 @@
   "name": "mat-tooltip",
   "license": "BSD-3-Clause",
   "version": "0.8.0",
-  "description": "This component is used to display a material tooltip.",
+  "description": "This element is used to display a material tooltip.",
   "authors": [
     "Giuliano Rullo <g.rullo@expandjs.com>",
     "Maurizio Stefàno <m.stefano@expandjs.com>",
