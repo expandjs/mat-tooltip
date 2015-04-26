@@ -34,16 +34,16 @@ This element is used to display a material tooltip.
                 overflow: visible;
             }
 
-            :host #matTooltipAdaptee::shadow #xpTooltipOverlay {
+            :host #matTooltipAdaptee::shadow > #xpTooltipOverlay {
                 transition: opacity .4s cubic-bezier(0.55, 0, 0.55, 0.2), visibility .4s cubic-bezier(0.55, 0, 0.55, 0.2);
                 will-change: opacity, visibility;
             }
 
-            :host #matTooltipAdaptee[showed]::shadow #xpTooltipOverlay {
+            :host #matTooltipAdaptee[showed]::shadow > #xpTooltipOverlay {
                 transition: opacity .4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility .4s cubic-bezier(0.25, 0.8, 0.25, 1);
             }
 
-            :host #matTooltipAdaptee::shadow #xpTooltipTip {
+            :host #matTooltipAdaptee::shadow > #xpTooltipTip {
                 border-radius: 2px 2px 50% 50%;
                 padding: 4px 8px;
                 transform: translateY(-50%);
@@ -59,17 +59,7 @@ This element is used to display a material tooltip.
                 white-space: nowrap;
             }
 
-            :host #matTooltipAdaptee[showed]::shadow #xpTooltipTip {
-                border-radius: 2px;
-                transform: translateY(0%);
-                transition: border-radius .4s cubic-bezier(0.25, 0.8, 0.25, 1), transform .4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            }
-
-            :host #matTooltipAdaptee::shadow #xpTooltipOverlay::shadow #xpOverlayBody {
-                overflow: visible;
-            }
-
-            :host-context([mobile]) #matTooltipAdaptee::shadow #xpTooltipTip  {
+            :host-context([mobile]) #matTooltipAdaptee::shadow > #xpTooltipTip  {
                 margin: 12px 0;
                 padding: 10px 16px;
 
@@ -80,6 +70,12 @@ This element is used to display a material tooltip.
                 line-height: 24px;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+            }
+
+            :host #matTooltipAdaptee[showed]::shadow > #xpTooltipTip {
+                border-radius: 2px;
+                transform: translateY(0%);
+                transition: border-radius .4s cubic-bezier(0.25, 0.8, 0.25, 1), transform .4s cubic-bezier(0.25, 0.8, 0.25, 1);
             }
         </style>
         <xp-tooltip context="{{}}" id="matTooltipAdaptee" empty="{{empty}}" showed="{{showed}}" tip="{{tip}}">
