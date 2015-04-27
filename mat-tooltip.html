@@ -43,7 +43,7 @@ This element is used to display a material tooltip.
                 transition: opacity .4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility .4s cubic-bezier(0.25, 0.8, 0.25, 1);
             }
 
-            :host #matTooltipAdaptee::shadow > #xpTooltipTip {
+            :host #matTooltipAdaptee::shadow > #xpTooltipOverlay > #xpTooltipTip {
                 border-radius: 2px 2px 50% 50%;
                 padding: 4px 8px;
                 transform: translateY(-50%);
@@ -59,7 +59,7 @@ This element is used to display a material tooltip.
                 white-space: nowrap;
             }
 
-            :host-context([mobile]) #matTooltipAdaptee::shadow > #xpTooltipTip  {
+            :host-context([mobile]) #matTooltipAdaptee::shadow > #xpTooltipOverlay > #xpTooltipTip  {
                 margin: 12px 0;
                 padding: 10px 16px;
 
@@ -72,7 +72,7 @@ This element is used to display a material tooltip.
                 white-space: nowrap;
             }
 
-            :host #matTooltipAdaptee[showed]::shadow > #xpTooltipTip {
+            :host #matTooltipAdaptee[showed]::shadow > #xpTooltipOverlay > #xpTooltipTip {
                 border-radius: 2px;
                 transform: translateY(0%);
                 transition: border-radius .4s cubic-bezier(0.25, 0.8, 0.25, 1), transform .4s cubic-bezier(0.25, 0.8, 0.25, 1);
