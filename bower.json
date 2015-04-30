@@ -1,8 +1,8 @@
 {
   "name": "mat-tooltip",
   "license": "BSD-3-Clause",
-  "version": "0.8.4",
-  "description": "This element is used to display a material tooltip.",
+  "version": "0.8.5",
+  "description": "A custom element used to display a Material Design tooltip",
   "homepage": "http://www.expandjs.com/elements/mat-tooltip",
   "authors": [
     "Giuliano Rullo <g.rullo@expandjs.com>",
