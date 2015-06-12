@@ -24,9 +24,9 @@
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs",
-    "xp-device": "ExpandJS/xp-device",
-    "xp-tooltip": "ExpandJS/xp-tooltip",
+    "expandjs": "ExpandJS/expandjs#alpha",
+    "xp-device": "ExpandJS/xp-device#alpha",
+    "xp-tooltip": "ExpandJS/xp-tooltip#alpha",
     "polymer": "Polymer/polymer#^0.5"
   }
 }
