@@ -16,11 +16,11 @@ This element is used to display a material tooltip.
 @homepage http://expandjs.com/elements/mat-tooltip
 @demo http://expandjs.com/demo/mat-tooltip
 
-@dependency polymer Polymer/polymer
-@dependency expandjs ExpandJS/expandjs
-@dependency xp-tooltip ExpandJS/xp-tooltip
+@dependency polymer Polymer/polymer#^1.0.4
+@dependency expandjs ExpandJS/expandjs#0.9.1
+@dependency xp-tooltip ExpandJS/xp-tooltip#0.9.1
 
-@devDependency mat-demo ExpandJS/mat-demo
+@devDependency mat-demo ExpandJS/mat-demo#0.9.1
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -46,7 +46,9 @@ This element is used to display a material tooltip.
 
         :host #matTooltipAdaptee::shadow #xpTooltipTip {
             border-radius: 2px 2px 50% 50%;
-            padding: 4px 8px;
+            height: 32px;
+            margin-top: 10px;
+            padding: 0 16px;
             -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
             -webkit-transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
@@ -54,10 +56,10 @@ This element is used to display a material tooltip.
             will-change: border-radius, transform;
 
             /* TIP MOBILE */
-            font-size: 10px;
+            font-size: 14px;
             font-weight: 500;
-            letter-spacing: 0.02em;
-            line-height: 14px;
+            letter-spacing: 0.01em;
+            line-height: 32px;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
@@ -75,14 +77,15 @@ This element is used to display a material tooltip.
         @media (min-width: 960px) {
 
             :host #matTooltipAdaptee::shadow #xpTooltipTip {
-                margin: 12px 0;
-                padding: 10px 16px;
+                margin-top: 0;
+                padding: 0 8px;
 
                 /* TIP TABLET */
-                font-size: 14px;
+                font-size: 10px;
                 font-weight: 500;
-                letter-spacing: 0.01em;
-                line-height: 24px;
+                height: 22px;
+                letter-spacing: 0.02em;
+                line-height: 22px;
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
