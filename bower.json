@@ -26,7 +26,7 @@
   "dependencies": {
     "expandjs": "ExpandJS/expandjs#0.9.1",
     "xp-tooltip": "ExpandJS/xp-tooltip#0.9.1",
-    "polymer": "Polymer/polymer#^1.0.4"
+    "polymer": "Polymer/polymer#^1.0.0"
   },
   "devDependencies": {
     "mat-demo": "ExpandJS/mat-demo#0.9.1"
