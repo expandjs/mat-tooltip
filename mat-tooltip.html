@@ -17,15 +17,31 @@ This element is used to display a material tooltip.
 @demo http://expandjs.com/demo/mat-tooltip
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.1
-@dependency xp-tooltip ExpandJS/xp-tooltip#0.9.1
+@dependency expandjs ExpandJS/expandjs#0.9.2
+@dependency xp-tooltip ExpandJS/xp-tooltip#0.9.2
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.1
+@devDependency mat-demo ExpandJS/mat-demo#0.9.2
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
 <link rel="import" href="../xp-tooltip/xp-tooltip.html">
+
+<style>
+    html[mobile] #matTooltipAdaptee #xpTooltipTip {
+        height: 32px;
+        margin-top: 10px;
+        padding: 0 16px;
+
+        /* TIP */
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        line-height: 32px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
 
 <dom-module id="mat-tooltip">
 
@@ -46,20 +62,20 @@ This element is used to display a material tooltip.
 
         :host #matTooltipAdaptee::shadow #xpTooltipTip {
             border-radius: 2px 2px 50% 50%;
-            height: 32px;
-            margin-top: 10px;
-            padding: 0 16px;
+            height: 22px;
+            margin-top: 0;
+            padding: 0 8px;
             -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
             -webkit-transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
             transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
             will-change: border-radius, transform;
 
-            /* TIP MOBILE */
-            font-size: 14px;
+            /* TIP */
+            font-size: 10px;
             font-weight: 500;
-            letter-spacing: 0.01em;
-            line-height: 32px;
+            letter-spacing: 0.02em;
+            line-height: 22px;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
@@ -70,25 +86,6 @@ This element is used to display a material tooltip.
             transform: translateY(0%);
             -webkit-transition: border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             transition: border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        /* TABLET */
-
-        @media (min-width: 960px) {
-
-            :host #matTooltipAdaptee::shadow #xpTooltipTip {
-                margin-top: 0;
-                padding: 0 8px;
-
-                /* TIP TABLET */
-                font-size: 10px;
-                font-weight: 500;
-                height: 22px;
-                letter-spacing: 0.02em;
-                line-height: 22px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
         }
     </style>
 
