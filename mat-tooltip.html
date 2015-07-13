@@ -17,16 +17,19 @@ This element is used to display a material tooltip.
 @demo http://expandjs.com/demo/mat-tooltip
 
 @wraps xp-tooltip http://expandjs.com/elements/xp-tooltip
+@behavior xp-adapter-behavior http://expandjs.com/elements/xp-adapter-behavior
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.3
-@dependency xp-tooltip ExpandJS/xp-tooltip#0.9.3
+@dependency expandjs ExpandJS/expandjs#0.9.4
+@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.4
+@dependency xp-tooltip ExpandJS/xp-tooltip#0.9.4
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.3
+@devDependency mat-demo ExpandJS/mat-demo#0.9.4
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
+<link rel="import" href="../xp-adapter-behavior/xp-adapter-behavior.html">
 <link rel="import" href="../xp-tooltip/xp-tooltip.html">
 
 <style>
@@ -102,6 +105,11 @@ This element is used to display a material tooltip.
 
             // ELEMENT
             is: 'mat-tooltip',
+
+            // BEHAVIORS
+            behaviors: [
+                Polymer.XPAdapterBehavior
+            ],
 
             /*********************************************************************/
 
@@ -186,6 +194,13 @@ This element is used to display a material tooltip.
                     type: String,
                     value: null
                 }
+            },
+
+            /*********************************************************************/
+
+            // LISTENER
+            ready: function () {
+                this._adapt(this.$.matTooltipAdaptee);
             }
         });
     </script>
