@@ -7,7 +7,16 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-This element is used to display a material tooltip.
+An element used to display a [Material Design tooltip](http://www.google.com/design/spec/components/tooltips.html#).
+
+It implements a tooltip centered under the content it contains.
+It will reveal itself either on hovering or on tap.
+
+```html
+<mat-tooltip tip="Hello!">
+    <mat-icon-button icon="social:person"></mat-icon-button>
+</mat-tooltip>
+```
 
 @element mat-tooltip
 @description A custom element used to display a Material Design tooltip
@@ -16,15 +25,15 @@ This element is used to display a material tooltip.
 @homepage http://expandjs.com/elements/mat-tooltip
 @demo http://expandjs.com/demo/mat-tooltip
 
-@wraps xp-tooltip http://expandjs.com/elements/xp-tooltip
-@behavior xp-adapter-behavior http://expandjs.com/elements/xp-adapter-behavior
+@adapts xp-tooltip /bower_components/xp-tooltip/xp-tooltip.html
+@behavior xp-adapter-behavior /bower_components/xp-adapter-behavior/xp-adapter-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.4
-@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.4
-@dependency xp-tooltip ExpandJS/xp-tooltip#0.9.4
+@dependency expandjs ExpandJS/expandjs#0.9.5
+@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.5
+@dependency xp-tooltip ExpandJS/xp-tooltip#0.9.5
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.4
+@devDependency mat-demo ExpandJS/mat-demo#0.9.5
 -->
 
 <link rel="import" href="../polymer/polymer.html">
