@@ -42,22 +42,6 @@ It will reveal itself either on hovering or on tap.
 <link rel="import" href="../xp-adapter-behavior/xp-adapter-behavior.html">
 <link rel="import" href="../xp-tooltip/xp-tooltip.html">
 
-<style>
-    html[mobile] #matTooltipAdaptee #xpTooltipTip {
-        height: 32px;
-        margin-top: 10px;
-        padding: 0 16px;
-
-        /* TIP */
-        font-size: 14px;
-        font-weight: 500;
-        letter-spacing: 0.01em;
-        line-height: 32px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-</style>
-
 <dom-module id="mat-tooltip">
 
     <style>
@@ -91,6 +75,20 @@ It will reveal itself either on hovering or on tap.
             font-weight: 500;
             letter-spacing: 0.02em;
             line-height: 22px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        :host-context([mobile]) #matTooltipAdaptee::shadow #xpTooltipTip {
+            height: 32px;
+            margin-top: 10px;
+            padding: 0 16px;
+
+            /* TIP */
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            line-height: 32px;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
