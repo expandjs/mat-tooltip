@@ -2,6 +2,7 @@
   "name": "mat-tooltip",
   "license": "BSD-3-Clause",
   "version": "0.9.6",
+  "main": "mat-tooltip.html",
   "description": "A custom element used to display a Material Design tooltip",
   "homepage": "http://expandjs.com/elements/mat-tooltip",
   "authors": [
@@ -16,9 +17,6 @@
     "html5",
     "expandjs",
     "web-components"
-  ],
-  "main": [
-    "mat-tooltip.html"
   ],
   "ignore": [
     "**/.*"
