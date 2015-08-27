@@ -25,7 +25,7 @@
     "expandjs": "ExpandJS/expandjs#0.9.8",
     "xp-adapter-behavior": "ExpandJS/xp-adapter-behavior#0.9.8",
     "xp-tooltip": "ExpandJS/xp-tooltip#0.9.8",
-    "polymer": "Polymer/polymer#^1.0.0"
+    "polymer": "Polymer/polymer#^1.1.0"
   },
   "devDependencies": {
     "mat-demo": "ExpandJS/mat-demo#0.9.8"
