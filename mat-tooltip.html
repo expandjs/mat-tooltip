@@ -44,68 +44,70 @@ It will reveal itself either on hovering or on tap.
 
 <dom-module id="mat-tooltip">
 
-    <style>
-        :host {
-            display: inline-block;
-            overflow: visible;
-        }
-
-        :host #matTooltipAdaptee::shadow #xpTooltipOverlay {
-            transition: opacity 0.4s cubic-bezier(0.55, 0, 0.55, 0.2), visibility 0.4s cubic-bezier(0.55, 0, 0.55, 0.2);
-            will-change: opacity, visibility;
-        }
-
-        :host #matTooltipAdaptee[showed]::shadow #xpTooltipOverlay {
-            transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        :host #matTooltipAdaptee::shadow #xpTooltipTip {
-            border-radius: 2px 2px 50% 50%;
-            height: 22px;
-            margin-top: 0;
-            padding: 0 8px;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-            -webkit-transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
-            transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
-            will-change: border-radius, -webkit-transform, transform;
-
-            /* TIP */
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            line-height: 22px;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        :host-context([mobile]) #matTooltipAdaptee::shadow #xpTooltipTip {
-            height: 32px;
-            margin-top: 10px;
-            padding: 0 16px;
-
-            /* TIP */
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.01em;
-            line-height: 32px;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        :host #matTooltipAdaptee[showed]::shadow #xpTooltipTip {
-            border-radius: 2px;
-            -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-            -webkit-transition: border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            transition: border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-    </style>
-
     <template>
+
+        <style>
+            :host {
+                display: inline-block;
+                overflow: visible;
+            }
+
+            :host #matTooltipAdaptee::shadow #xpTooltipOverlay {
+                transition: opacity 0.4s cubic-bezier(0.55, 0, 0.55, 0.2), visibility 0.4s cubic-bezier(0.55, 0, 0.55, 0.2);
+                will-change: opacity, visibility;
+            }
+
+            :host #matTooltipAdaptee[showed]::shadow #xpTooltipOverlay {
+                transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+
+            :host #matTooltipAdaptee::shadow #xpTooltipTip {
+                border-radius: 2px 2px 50% 50%;
+                height: 22px;
+                margin-top: 0;
+                padding: 0 8px;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                -webkit-transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
+                transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
+                will-change: border-radius, -webkit-transform, transform;
+
+                /* TIP */
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                line-height: 22px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            :host-context([mobile]) #matTooltipAdaptee::shadow #xpTooltipTip {
+                height: 32px;
+                margin-top: 10px;
+                padding: 0 16px;
+
+                /* TIP */
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 0.01em;
+                line-height: 32px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            :host #matTooltipAdaptee[showed]::shadow #xpTooltipTip {
+                border-radius: 2px;
+                -webkit-transform: translateY(0%);
+                transform: translateY(0%);
+                -webkit-transition: border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                transition: border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+        </style>
+
         <xp-tooltip id="matTooltipAdaptee" empty="{{empty}}" showed="{{showed}}" tip="[[tip]]">
             <content id="content"></content>
         </xp-tooltip>
+
     </template>
 
     <script>
