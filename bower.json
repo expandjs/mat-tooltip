@@ -1,7 +1,7 @@
 {
   "name": "mat-tooltip",
   "license": "BSD-3-Clause",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "main": "mat-tooltip.html",
   "description": "A custom element used to display a Material Design tooltip",
   "homepage": "http://expandjs.com/elements/mat-tooltip",
@@ -22,12 +22,12 @@
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs#0.9.8",
-    "xp-adapter-behavior": "ExpandJS/xp-adapter-behavior#0.9.8",
-    "xp-tooltip": "ExpandJS/xp-tooltip#0.9.8",
+    "expandjs": "ExpandJS/expandjs#0.9.9",
+    "xp-adapter-behavior": "ExpandJS/xp-adapter-behavior#0.9.9",
+    "xp-tooltip": "ExpandJS/xp-tooltip#0.9.9",
     "polymer": "Polymer/polymer#^1.1.0"
   },
   "devDependencies": {
-    "mat-demo": "ExpandJS/mat-demo#0.9.8"
+    "mat-demo": "ExpandJS/mat-demo#0.9.9"
   }
 }
