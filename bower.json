@@ -23,7 +23,6 @@
   ],
   "dependencies": {
     "expandjs": "ExpandJS/expandjs#0.9.10",
-    "xp-adapter-behavior": "ExpandJS/xp-adapter-behavior#0.9.10",
     "xp-tooltip": "ExpandJS/xp-tooltip#0.9.10",
     "polymer": "Polymer/polymer#^1.1.0"
   },
