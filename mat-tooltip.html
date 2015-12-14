@@ -7,7 +7,7 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-An element used to display a [Material Design tooltip](http://www.google.com/design/spec/components/tooltips.html#).
+A custom element used to display a [Material Design tooltip](http://www.google.com/design/spec/components/tooltips.html#).
 
 It implements a tooltip centered under the content it contains.
 It will reveal itself either on hovering or on tap.
@@ -20,79 +20,72 @@ It will reveal itself either on hovering or on tap.
 
 @element mat-tooltip
 @description A custom element used to display a Material Design tooltip
-@keywords material design, material tooltip, web app, html5, expandjs, web-components
+@keywords material design, material tooltip, expandjs, web app, custom elements, web-components
 @group accessibility
+
 @homepage http://expandjs.com/elements/mat-tooltip
 @repository https://github.com/ExpandJS/mat-tooltip
 @demo http://expandjs.com/demo/mat-tooltip
 
-@adapts xp-tooltip /bower_components/xp-tooltip/xp-tooltip.html
+@behavior xp-tooltip-behavior /bower_components/xp-tooltip-behavior/xp-tooltip-behavior.html
 
-@dependency polymer Polymer/polymer#^1.1.0
-@dependency expandjs ExpandJS/expandjs#0.9.11
-@dependency xp-tooltip ExpandJS/xp-tooltip#0.9.11
+@dependency polymer Polymer/polymer#^1.2.0
+@dependency expandjs ExpandJS/expandjs#0.10.0
+@dependency xp-overlay ExpandJS/xp-overlay#0.10.0
+@dependency xp-device ExpandJS/xp-device#0.10.0
+@dependency xp-tooltip-behavior ExpandJS/xp-tooltip-behavior#0.10.0
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.11
+@devDependency mat-demo ExpandJS/mat-demo#0.10.0
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
-<link rel="import" href="../xp-tooltip/xp-tooltip.html">
+<link rel="import" href="../xp-overlay/xp-overlay.html">
+<link rel="import" href="../xp-device/xp-device.html">
+<link rel="import" href="../xp-tooltip-behavior/xp-tooltip-behavior.html">
+<link rel="import" href="../xp-tooltip-behavior/xp-tooltip-styles.html">
 
 <dom-module id="mat-tooltip">
 
-    <template>
+    <template strip-whitespace>
+
+        <style include="xp-tooltip-styles"></style>
 
         <style>
-            :host {
-                display: inline-block;
-                overflow: visible;
-            }
-
-            :host #matTooltipAdaptee::shadow #xpTooltipOverlay {
+            :host .overlay {
+                margin: 8px;
                 transition: opacity 0.4s cubic-bezier(0.55, 0, 0.55, 0.2), visibility 0.4s cubic-bezier(0.55, 0, 0.55, 0.2);
-                will-change: opacity, visibility;
             }
 
-            :host #matTooltipAdaptee[showed]::shadow #xpTooltipOverlay {
+            :host .overlay[showed] {
                 transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             }
 
-            :host #matTooltipAdaptee::shadow #xpTooltipTip {
+            :host .tip {
                 border-radius: 2px 2px 50% 50%;
+                font-size: 10px;
+                font-weight: 500;
                 height: 22px;
-                margin-top: 0;
+                letter-spacing: 0.02em;
+                line-height: 22px;
+                margin-top: var(--mat-tooltip-margin, 2px);
                 padding: 0 8px;
                 -webkit-transform: translateY(-50%);
                 transform: translateY(-50%);
                 -webkit-transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
                 transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
-                will-change: border-radius, -webkit-transform, transform;
-
-                /* TIP */
-                font-size: 10px;
-                font-weight: 500;
-                letter-spacing: 0.02em;
-                line-height: 22px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
             }
 
-            :host-context([mobile]) #matTooltipAdaptee::shadow #xpTooltipTip {
-                height: 32px;
-                margin-top: 10px;
-                padding: 0 16px;
-
-                /* TIP */
+            :host-context([mobile]) .tip {
                 font-size: 14px;
-                font-weight: 500;
+                height: 32px;
                 letter-spacing: 0.01em;
                 line-height: 32px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
+                margin-top: var(--mat-tooltip-margin, 12px);
+                padding: 0 16px;
             }
 
-            :host #matTooltipAdaptee[showed]::shadow #xpTooltipTip {
+            :host .overlay[showed] .tip {
                 border-radius: 2px;
                 -webkit-transform: translateY(0%);
                 transform: translateY(0%);
@@ -101,9 +94,11 @@ It will reveal itself either on hovering or on tap.
             }
         </style>
 
-        <xp-tooltip id="matTooltipAdaptee" empty="{{empty}}" showed="{{showed}}" tip="[[tip]]">
-            <content id="content"></content>
-        </xp-tooltip>
+        <content></content>
+
+        <xp-overlay position="baseline" showed="{{showed}}" target="[[self]]" auto-center auto-hide-disabled>
+            <div class="tip">[[tip]]</div>
+        </xp-overlay>
 
     </template>
 
@@ -113,112 +108,10 @@ It will reveal itself either on hovering or on tap.
             // ELEMENT
             is: 'mat-tooltip',
 
-            /*********************************************************************/
-
-            /**
-             * Hides the tooltip.
-             *
-             * @method hide
-             * @returns {Element}
-             */
-            hide: function () {
-                var self = this;
-                self.adaptee.hide();
-                return self;
-            },
-
-            /**
-             * Shows the tooltip.
-             *
-             * @method show
-             * @returns {Element}
-             */
-            show: function () {
-                var self = this;
-                self.adaptee.show();
-                return self;
-            },
-
-            /**
-             * Toggles the tooltip.
-             *
-             * @method toggle
-             * @returns {Element}
-             */
-            toggle: function () {
-                var self = this;
-                self.adaptee.toggle();
-                return self;
-            },
-
-            /*********************************************************************/
-
-            // PROPERTIES
-            properties: {
-
-                /**
-                 * The adapted element.
-                 *
-                 * @attribute adaptee
-                 * @type Element
-                 * @notifies
-                 * @readonly
-                 */
-                adaptee: {
-                    notify: true,
-                    readOnly: true,
-                    type: Object,
-                    value: null
-                },
-
-                /**
-                 * If set to true, the tooltip is hidden.
-                 *
-                 * @attribute empty
-                 * @type boolean
-                 * @notifies
-                 * @readonly
-                 */
-                empty: {
-                    notify: true,
-                    reflectToAttribute: true,
-                    type: Boolean
-                },
-
-                /**
-                 * If set to true, the tooltip is showed.
-                 *
-                 * @attribute showed
-                 * @type boolean
-                 * @default false
-                 * @notifies
-                 */
-                showed: {
-                    notify: true,
-                    reflectToAttribute: true,
-                    type: Boolean,
-                    value: false
-                },
-
-                /**
-                 * The tooltip's text.
-                 *
-                 * @attribute tip
-                 * @type string
-                 */
-                tip: {
-                    reflectToAttribute: true,
-                    type: String,
-                    value: null
-                }
-            },
-
-            /*********************************************************************/
-
-            // LISTENER
-            ready: function () {
-                this._setAdaptee(this.$.matTooltipAdaptee);
-            }
+            // BEHAVIORS
+            behaviors: [
+                Polymer.XPTooltipBehavior
+            ]
         });
     </script>
 
