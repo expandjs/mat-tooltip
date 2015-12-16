@@ -70,9 +70,7 @@ It will reveal itself either on hovering or on tap.
                 line-height: 22px;
                 margin-top: var(--mat-tooltip-margin, 2px);
                 padding: 0 8px;
-                -webkit-transform: translateY(-50%);
                 transform: translateY(-50%);
-                -webkit-transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
                 transition: border-radius 0.8s cubic-bezier(0.55, 0, 0.55, 0.2), transform 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) 0.05s;
             }
 
@@ -87,9 +85,7 @@ It will reveal itself either on hovering or on tap.
 
             :host .overlay[showed] .tip {
                 border-radius: 2px;
-                -webkit-transform: translateY(0%);
                 transform: translateY(0%);
-                -webkit-transition: border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
                 transition: border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             }
         </style>
